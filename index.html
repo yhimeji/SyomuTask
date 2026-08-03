@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>庶務タスク管理</title>
+
+    <style>
+        body {
+            font-family: "Yu Gothic", sans-serif;
+            background: #f5f6f8;
+            margin: 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            background: white;
+            width: 100%;
+            max-width: 1000px;
+            table-layout: fixed; /* 列幅を均等に固定 */
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #bfcce4;
+        }
+
+        .task-name {
+            /* 固定幅を撤廃して均等配置にする */
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .month {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .status {
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .completed {
+            background-color: #d6f5d6;
+            color: #008000;
+        }
+
+        .pending {
+            background-color: #ffe0e0;
+            color: #c00000;
+        }
+
+        .empty {
+            color: #ccc;
+        }
+
+        .status:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>庶務タスク管理</h1>
+
+    <table>
+        <colgroup>
+            <col style="width:16.6667%">
+            <col style="width:16.6667%">
+            <col style="width:16.6667%">
+            <col style="width:16.6667%">
+            <col style="width:16.6667%">
+            <col style="width:16.6667%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th colspan="2">タスク</th>
+                <th>姫路</th>
+                <th>田島</th>
+                <th>永島</th>
+                <th>徳田</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td rowspan="12" class="task-name">
+                    在宅勤務申請
+                </td>
+                <td class="month">2026年7月</td>
+                <td class="status pending">未完了</td>
+                <td class="status completed">完了</td>
+                <td class="status completed">完了</td>
+                <td class="status pending">未完了</td>
+            </tr>
+
+            <tr>
+                <td class="month">2026年8月</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+            </tr>
+
+            <tr>
+                <td class="month">2026年9月</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+            </tr>
+
+            <tr>
+                <td class="month">2026年10月</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+            </tr>
+
+            <tr>
+                <td class="month">2026年11月</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+            </tr>
+
+            <tr>
+                <td class="month">2026年12月</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+                <td class="status empty">-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.querySelectorAll(".status").forEach(cell => {
+
+            cell.addEventListener("click", () => {
+
+                if (cell.textContent.trim() === "未完了") {
+                    cell.textContent = "完了";
+                    cell.classList.remove("pending");
+                    cell.classList.add("completed");
+                } else {
+                    cell.textContent = "未完了";
+                    cell.classList.remove("completed");
+                    cell.classList.add("pending");
+                }
+
+            });
+
+        });
+    </script>
+</body>
+</html>
